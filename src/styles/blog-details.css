@@ -6,6 +6,10 @@ blockquote {
   line-height: 35px;
 }
 
+Images_detail{
+height: 450px;
+}
+
 .single__comment img {
   width: 70px;
   height: 70px;
