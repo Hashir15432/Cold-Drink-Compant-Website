@@ -8,14 +8,27 @@
 }
 
 
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 @media only screen and (max-width: 992px) {
   .about__section-content h2 {
     font-size: 1.5rem;
   }
+
   .about__section-item {
     column-gap: 3rem;
   }
+
   .about__section-item p {
     font-size: 0.6rem;
     margin-bottom: 0;

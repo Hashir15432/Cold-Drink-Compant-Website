@@ -18,6 +18,16 @@
   color: #fff;
   line-height: 65px;
 }
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 @media only screen and (max-width: 992px) {
   .become__driver-title {

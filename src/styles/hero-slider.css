@@ -3,6 +3,18 @@
   height: 650px;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 .slider__item-01 {
   background: linear-gradient(rgb(0, 13, 107, 0.5), rgb(0, 13, 107, 0.5)),
     url("../assets/all-images/slider-img/SMS-Entrance-.jpg");

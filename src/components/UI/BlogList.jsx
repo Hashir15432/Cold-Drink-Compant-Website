@@ -3,8 +3,28 @@ import { Col } from "reactstrap";
 import "../../styles/blog-item.css";
 import { Link } from "react-router-dom";
 import blogData from "../../assets/data/blogData";
-
+import { useEffect } from "react";
 const BlogList = () => {
+
+
+  useEffect(() => {
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const handleScroll = () => {
+      revealElements.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <>
       {blogData.map((item) => (
@@ -14,45 +34,74 @@ const BlogList = () => {
   );
 };
 
+
+
 const BlogItem = ({ item }) => {
   const { imgUrl, title, author, date, description, time } = item;
 
+useEffect(() => {
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const handleScroll = () => {
+      revealElements.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <Col lg="4" md="6" sm="6" className="mb-5">
-      <div className="blog__item">
-        <img src={imgUrl} alt="" className="w-100"  style={{ height: "450px", objectFit: "cover" }}/>
-        <div className="blog__info p-3">
-          <Link to={`/blogs/${title}`} className="blog__title">
-            {title}
-          </Link>
-          <p className="section__description mt-3">
-            {description.length > 100
-              ? description.substr(0, 100)
-              : description}
-          </p>
+    <Col
+  lg="4"
+  md="6"
+  sm="6"
+  className="mb-5 reveal" // <-- Added reveal class for scroll animation
+>
+  <div className="blog__item">
+    <img
+      src={imgUrl}
+      alt=""
+      className="w-100"
+      style={{ height: "450px", objectFit: "cover" }}
+    />
+    <div className="blog__info p-3">
+      <Link to={`/blogs/${title}`} className="blog__title">
+        {title}
+      </Link>
+      <p className="section__description mt-3">
+        {description.length > 100 ? description.substr(0, 100) : description}
+      </p>
 
-          <Link to={`/blogs/${title}`} className="read__more">
-            Read More
-          </Link>
+      <Link to={`/blogs/${title}`} className="read__more">
+        Read More
+      </Link>
 
-          <div className="blog__time pt-3 mt-3 d-flex align-items-center justify-content-between">
-            <span className="blog__author">
-              <i class="ri-user-line"></i> {author}
-            </span>
+      <div className="blog__time pt-3 mt-3 d-flex align-items-center justify-content-between">
+        <span className="blog__author">
+          <i className="ri-user-line"></i> {author}
+        </span>
 
-            <div className=" d-flex align-items-center gap-3">
-              <span className=" d-flex align-items-center gap-1 section__description">
-                <i class="ri-calendar-line"></i> {date}
-              </span>
+        <div className="d-flex align-items-center gap-3">
+          <span className="d-flex align-items-center gap-1 section__description">
+            <i className="ri-calendar-line"></i> {date}
+          </span>
 
-              <span className=" d-flex align-items-center gap-1 section__description">
-                <i class="ri-time-line"></i> {time}
-              </span>
-            </div>
-          </div>
+          <span className="d-flex align-items-center gap-1 section__description">
+            <i className="ri-time-line"></i> {time}
+          </span>
         </div>
       </div>
-    </Col>
+    </div>
+  </div>
+</Col>
+
   );
 };
 

@@ -2,6 +2,17 @@
   border: 1x solid #7c8a972e;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .blog__time {
   border-top: 1px solid #7c8a972e;
 }

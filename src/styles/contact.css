@@ -6,6 +6,18 @@
   font-size: 1.2rem;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 .contact__btn {
   padding: 7px 15px;
   background: #000d6b;

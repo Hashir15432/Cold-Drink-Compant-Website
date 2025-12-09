@@ -6,8 +6,22 @@ blockquote {
   line-height: 35px;
 }
 
-Images_detail{
-height: 450px;
+/* ============================
+   Simple Scroll Animation
+============================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+Images_detail {
+  height: 450px;
 }
 
 .single__comment img {

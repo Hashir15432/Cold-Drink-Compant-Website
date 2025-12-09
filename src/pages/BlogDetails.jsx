@@ -11,6 +11,7 @@ import commentImg from "../assets/all-images/ava-1.jpg";
 import "../styles/blog-details.css";
 
 const BlogDetails = () => {
+  
   const { slug } = useParams();
   const blog = blogData.find((blog) => blog.title === slug);
 
@@ -18,6 +19,27 @@ const BlogDetails = () => {
     window.scrollTo(0, 0);
   }, [blog]);
 
+
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal");
+
+    const handleScroll = () => {
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (rect < windowHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <Helmet title={blog.title}>
       <section>
